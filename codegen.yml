@@ -1,0 +1,25 @@
+overwrite: true
+schema:
+  - https://shopify.dev/storefront-graphql-direct-proxy/2025-01:
+      headers:
+        X-Shopify-Storefront-Access-Token: ${SHOPIFY_STOREFRONT_ACCESS_TOKEN}
+documents:
+  - 'src/**/*.{ts,tsx}'
+  - 'src/lib/shopify/queries.ts'
+  - 'src/lib/shopify/mutations.ts'
+generates:
+  src/generated/graphql.ts:
+    plugins:
+      - 'typescript'
+      - 'typescript-operations'
+    config:
+      avoidOptionals: false
+      maybeValue: T | null | undefined
+      skipTypename: false
+      enumsAsTypes: true
+      scalars:
+        DateTime: string
+        Decimal: string
+        JSON: Record<string, unknown>
+        Money: string
+        URL: string
