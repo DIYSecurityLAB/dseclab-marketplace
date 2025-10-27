@@ -1,0 +1,154 @@
+{
+  "navbar": {
+    "links": {
+      "shop": "Shop",
+      "buildKit": "Build your Kit",
+      "academy": "D-Academy",
+      "support": {
+        "label": "Support",
+        "tutorials": "Tutorials",
+        "contact": "Contact",
+        "about": "About Us",
+        "sovereignty": "Build Your Sovereignty"
+      }
+    },
+    "languageSelector": {
+      "label": "Language",
+      "english": "English",
+      "portuguese": "Portuguese"
+    },
+    "auth": {
+      "login": "Login",
+      "account": "Account"
+    }
+  },
+  "product": {
+    "backToProducts": "Back to Products",
+    "details": "Product Details",
+    "inStock": "In stock",
+    "outOfStock": "Out of stock",
+    "lowStock": "only {count} units",
+    "quantity": "Quantity",
+    "selectVariant": "Select Variant",
+    "buyButton": {
+      "buy": "Buy Now",
+      "adding": "Adding...",
+      "unavailable": "Unavailable"
+    },
+    "pricing": {
+      "save": "Save {amount}"
+    },
+    "paymentMethods": {
+      "title": "Payment Methods",
+      "creditCard": "Credit Card (up to {installments}x of {installmentValue})",
+      "pix": "Pix (5% discount)",
+      "bankSlip": "Bank Slip"
+    },
+    "shipping": {
+      "calculatedAtCheckout": "Shipping calculated at checkout"
+    },
+    "addedToCart": "Product added to cart!",
+    "error": "Error adding product to cart"
+  },
+  "products": {
+    "title": "Products",
+    "noProducts": "No products found",
+    "errorLoading": "Error loading products. Please check your Shopify credentials.",
+    "installments": "up to {count}x of {value}"
+  },
+  "cart": {
+    "title": "Shopping Cart",
+    "empty": "Your cart is empty",
+    "subtotal": "Subtotal",
+    "total": "Total",
+    "checkout": "Proceed to Checkout",
+    "continueShopping": "Continue Shopping",
+    "remove": "Remove",
+    "update": "Update",
+    "quantity": "Quantity",
+    "orderSummary": "Order Summary",
+    "loading": "Loading cart...",
+    "errorLoading": "Error loading cart"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "retry": "Try again",
+    "close": "Close",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort"
+  },
+  "transactionShowcase": {
+    "title": {
+      "part1": "Transactions of",
+      "part2": "Partially Signed Bitcoin"
+    },
+    "description": {
+      "part1": "Interoperability between Bitcoin hardware wallets is now possible, thanks to BIP174, which introduces a binary file format that all hardware wallets can use.",
+      "part2": "Krux has been based on BIP174 since day one and uses it exclusively."
+    },
+    "cards": {
+      "blue": "BlueWallet",
+      "spectre": "Spectre",
+      "nomad": "Nomad",
+      "sparrow": "Sparrow"
+    }
+  },
+  "community": {
+    "title": {
+      "connect": "CONNECT",
+      "with": "WITH OUR",
+      "ourCommunity": "COMMUNITY"
+    },
+    "discord": {
+      "title": "DISCORD",
+      "description": "Discussions, community support and lots of technical content.",
+      "cardTitle": "Our Decentralized Community",
+      "cardDescription": "An open space to exchange knowledge, debate ideas and build together the path of digital sovereignty."
+    },
+    "telegram": {
+      "title": "TELEGRAM",
+      "description": "quick chat, news and real-time updates."
+    },
+    "dcast": {
+      "title": "D-CAST",
+      "description": "our official podcast, where we talk about innovation, decentralization and the tools that are shaping the future.",
+      "cardTitle": "Voices of Decentralization",
+      "cardDescription": "The podcast that connects you to the ideas, people and technologies that are shaping the future of financial freedom."
+    },
+    "blog": {
+      "button": "Discover our",
+      "buttonBold": "Blog"
+    },
+    "seeMore": "See more"
+  },
+  "footer": {
+    "customerService": {
+      "title": "Customer Service",
+      "hours": "Hours: Mon-Sat 10am-7pm",
+      "email": "Email:",
+      "whatsapp": {
+        "button": "Customer Service",
+        "via": "via Whatsapp"
+      }
+    },
+    "social": {
+      "follow": "Follow Us"
+    },
+    "selectors": {
+      "country": "Country/Region",
+      "language": "Language",
+      "close": "Close"
+    },
+    "about": "About",
+    "support": "Support",
+    "legal": "Legal",
+    "newsletter": "Subscribe to our newsletter",
+    "copyright": "All rights reserved"
+  }
+}

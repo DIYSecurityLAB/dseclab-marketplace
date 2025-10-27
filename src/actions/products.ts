@@ -28,6 +28,21 @@ export async function getProducts() {
                   currencyCode
                 }
               }
+              variants(first: 1) {
+                edges {
+                  node {
+                    id
+                    price {
+                      amount
+                      currencyCode
+                    }
+                    compareAtPrice {
+                      amount
+                      currencyCode
+                    }
+                  }
+                }
+              }
               images(first: 1) {
                 edges {
                   node {
@@ -69,7 +84,12 @@ export async function getProductByHandle(handle: string) {
               currencyCode
             }
           }
-          variants(first: 10) {
+          options {
+            id
+            name
+            values
+          }
+          variants(first: 100) {
             edges {
               node {
                 id
@@ -78,11 +98,20 @@ export async function getProductByHandle(handle: string) {
                   amount
                   currencyCode
                 }
+                compareAtPriceV2 {
+                  amount
+                  currencyCode
+                }
                 availableForSale
+                quantityAvailable
+                selectedOptions {
+                  name
+                  value
+                }
               }
             }
           }
-          images(first: 5) {
+          images(first: 10) {
             edges {
               node {
                 url

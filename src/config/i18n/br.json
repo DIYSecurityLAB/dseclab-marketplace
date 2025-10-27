@@ -1,0 +1,154 @@
+{
+  "navbar": {
+    "links": {
+      "shop": "Comprar",
+      "buildKit": "Monte seu Kit",
+      "academy": "D-Academy",
+      "support": {
+        "label": "Suporte",
+        "tutorials": "Tutoriais",
+        "contact": "Contato",
+        "about": "Quem Somos",
+        "sovereignty": "Monte Sua Soberania"
+      }
+    },
+    "languageSelector": {
+      "label": "Idioma",
+      "english": "Inglês",
+      "portuguese": "Português"
+    },
+    "auth": {
+      "login": "Entrar",
+      "account": "Conta"
+    }
+  },
+  "product": {
+    "backToProducts": "Voltar aos Produtos",
+    "details": "Detalhes do Produto",
+    "inStock": "Em estoque",
+    "outOfStock": "Indisponível",
+    "lowStock": "apenas {count} unidades",
+    "quantity": "Quantidade",
+    "selectVariant": "Selecione a Variante",
+    "buyButton": {
+      "buy": "Comprar",
+      "adding": "Adicionando...",
+      "unavailable": "Indisponível"
+    },
+    "pricing": {
+      "save": "Economize {amount}"
+    },
+    "paymentMethods": {
+      "title": "Formas de Pagamento",
+      "creditCard": "Cartão de Crédito (até {installments}x de {installmentValue})",
+      "pix": "Pix (5% de desconto)",
+      "bankSlip": "Boleto Bancário"
+    },
+    "shipping": {
+      "calculatedAtCheckout": "Frete calculado no checkout"
+    },
+    "addedToCart": "Produto adicionado ao carrinho!",
+    "error": "Erro ao adicionar produto ao carrinho"
+  },
+  "products": {
+    "title": "Produtos",
+    "noProducts": "Nenhum produto encontrado",
+    "errorLoading": "Erro ao carregar produtos. Verifique suas credenciais do Shopify.",
+    "installments": "em até {count}x de {value}"
+  },
+  "cart": {
+    "title": "Carrinho de Compras",
+    "empty": "Seu carrinho está vazio",
+    "subtotal": "Subtotal",
+    "total": "Total",
+    "checkout": "Finalizar Compra",
+    "continueShopping": "Continuar Comprando",
+    "remove": "Remover",
+    "update": "Atualizar",
+    "quantity": "Quantidade",
+    "orderSummary": "Resumo do Pedido",
+    "loading": "Carregando carrinho...",
+    "errorLoading": "Erro ao carregar carrinho"
+  },
+  "common": {
+    "loading": "Carregando...",
+    "error": "Ocorreu um erro",
+    "retry": "Tentar novamente",
+    "close": "Fechar",
+    "save": "Salvar",
+    "cancel": "Cancelar",
+    "delete": "Excluir",
+    "edit": "Editar",
+    "search": "Buscar",
+    "filter": "Filtrar",
+    "sort": "Ordenar"
+  },
+  "transactionShowcase": {
+    "title": {
+      "part1": "Transações de",
+      "part2": "Bitcoin parcialmente assinadas"
+    },
+    "description": {
+      "part1": "A interoperação entre as carteiras de hardware Bitcoin agora é possível, graças ao BIP174, que introduz um formato de arquivo binário que todas as carteiras de hardware podem usar.",
+      "part2": "A Krux foi baseada no BIP174 desde o primeiro dia e o utiliza exclusivamente."
+    },
+    "cards": {
+      "blue": "BlueWallet",
+      "spectre": "Spectre",
+      "nomad": "Nomad",
+      "sparrow": "Sparrow"
+    }
+  },
+  "community": {
+    "title": {
+      "connect": "CONECTE-SE",
+      "with": "COM A",
+      "ourCommunity": "NOSSA COMUNIDADE"
+    },
+    "discord": {
+      "title": "DISCORD",
+      "description": "Discussões, suporte da comunidade e muito conteúdo técnico.",
+      "cardTitle": "Nossa Comunidade Descentralizada",
+      "cardDescription": "Um espaço aberto para trocar conhecimento, debater ideias e construir juntos o caminho da soberania digital."
+    },
+    "telegram": {
+      "title": "TELEGRAM",
+      "description": "papo rápido, notícias e atualizações em tempo real."
+    },
+    "dcast": {
+      "title": "D-CAST",
+      "description": "nosso podcast oficial, onde falamos sobre inovação, descentralização e as ferramentas que estão moldando o futuro.",
+      "cardTitle": "Vozes da Descentralização",
+      "cardDescription": "O podcast que conecta você às ideias, pessoas e tecnologias que estão moldando o futuro da liberdade financeira."
+    },
+    "blog": {
+      "button": "Conheça nosso",
+      "buttonBold": "Blog"
+    },
+    "seeMore": "Veja mais"
+  },
+  "footer": {
+    "customerService": {
+      "title": "Central de Atendimento",
+      "hours": "Atendimento: seg. à sáb. 10 às 19h",
+      "email": "Email:",
+      "whatsapp": {
+        "button": "Atendimento",
+        "via": "via Whatsapp"
+      }
+    },
+    "social": {
+      "follow": "Siga-nos"
+    },
+    "selectors": {
+      "country": "País/região",
+      "language": "Idioma",
+      "close": "Fechar"
+    },
+    "about": "Sobre",
+    "support": "Suporte",
+    "legal": "Legal",
+    "newsletter": "Inscreva-se em nossa newsletter",
+    "copyright": "Todos os direitos reservados"
+  }
+}

@@ -1,12 +1,7 @@
 import { createAdminApiClient } from '@shopify/admin-api-client';
+import { shopifyConfig, validateShopifyAdminConfig } from '@/config/shopify.config';
 
-if (!process.env.SHOPIFY_STORE_DOMAIN) {
-  throw new Error('SHOPIFY_STORE_DOMAIN is not defined');
-}
-
-if (!process.env.SHOPIFY_ADMIN_ACCESS_TOKEN) {
-  throw new Error('SHOPIFY_ADMIN_ACCESS_TOKEN is not defined');
-}
+validateShopifyAdminConfig();
 
 /**
  * Shopify Admin API client singleton
@@ -14,9 +9,9 @@ if (!process.env.SHOPIFY_ADMIN_ACCESS_TOKEN) {
  * NOTE: This should only be used in server-side code, never exposed to client
  */
 export const adminClient = createAdminApiClient({
-  storeDomain: process.env.SHOPIFY_STORE_DOMAIN,
-  apiVersion: '2025-01',
-  accessToken: process.env.SHOPIFY_ADMIN_ACCESS_TOKEN,
+  storeDomain: shopifyConfig.storeDomain!,
+  apiVersion: shopifyConfig.apiVersion,
+  accessToken: shopifyConfig.adminAccessToken!,
 });
 
 /**

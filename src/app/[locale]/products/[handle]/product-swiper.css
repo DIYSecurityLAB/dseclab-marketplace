@@ -1,0 +1,19 @@
+/* Product Swiper Custom Styles */
+
+.product-thumbnail-swiper .swiper-slide-thumb-active > div {
+  border-color: #2563eb;
+}
+
+.product-thumbnail-swiper {
+  overflow-x: auto;
+}
+
+/* Hide scrollbar but keep functionality */
+.product-thumbnail-swiper::-webkit-scrollbar {
+  display: none;
+}
+
+.product-thumbnail-swiper {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

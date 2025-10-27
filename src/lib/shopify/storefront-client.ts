@@ -1,21 +1,16 @@
 import { createStorefrontApiClient } from '@shopify/storefront-api-client';
+import { shopifyConfig, validateShopifyConfig } from '@/config/shopify.config';
 
-if (!process.env.SHOPIFY_STORE_DOMAIN) {
-  throw new Error('SHOPIFY_STORE_DOMAIN is not defined');
-}
-
-if (!process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN) {
-  throw new Error('SHOPIFY_STOREFRONT_ACCESS_TOKEN is not defined');
-}
+validateShopifyConfig();
 
 /**
  * Shopify Storefront API client singleton
  * Used for customer-facing operations: products, collections, cart, checkout
  */
 export const storefrontClient = createStorefrontApiClient({
-  storeDomain: process.env.SHOPIFY_STORE_DOMAIN,
-  apiVersion: '2025-01',
-  publicAccessToken: process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN,
+  storeDomain: shopifyConfig.storeDomain!,
+  apiVersion: shopifyConfig.apiVersion,
+  publicAccessToken: shopifyConfig.storefrontAccessToken!,
 });
 
 /**
