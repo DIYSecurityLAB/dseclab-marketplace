@@ -15,6 +15,7 @@
     "@radix-ui/react-accordion": "^1.2.12",
     "@radix-ui/react-dropdown-menu": "^2.1.16",
     "@radix-ui/react-navigation-menu": "^1.2.14",
+    "@shopify/admin-api-client": "^1.1.1",
     "@shopify/graphql-client": "^1.4.1",
     "@shopify/shopify-api": "^12.1.0",
     "@shopify/storefront-api-client": "^1.0.9",
