@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import type { Swiper as SwiperType } from "swiper";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { testimonialImages } from "@/config/landing.config";
 
 import "swiper/css";
@@ -12,6 +13,7 @@ import "swiper/css/navigation";
 
 export default function Testimonials() {
   const swiperRef = useRef<SwiperType>(null);
+  const t = useTranslations();
 
   return (
     <div className="z-4 relative -mt-36 p-12 md:p-8 lg:p-12 xl:p-16">
@@ -29,14 +31,14 @@ export default function Testimonials() {
               {/* Header */}
               <div className="mb-8 lg:mb-12">
                 <h2 className="mb-4 md:mb-6 font-black text-2xl md:text-4xl xl:text-5xl">
-                  <span className="text-accent">+DE 100 FEEDBACK</span> DE
-                  CLIENTES QUE CONFIAM NO NOSSO TRABALHO!
+                  <span className="text-accent">{t("testimonials.title.highlight")}</span>{" "}
+                  {t("testimonials.title.text")}
                 </h2>
                 <p className="mb-2 md:mb-3 font-semibold text-lg md:text-xl lg:text-2xl">
-                  O Bitcoin abre caminho para o futuro.
+                  {t("testimonials.subtitle1")}
                 </p>
                 <p className="font-semibold text-base md:text-lg lg:text-xl">
-                  Venha ser soberano
+                  {t("testimonials.subtitle2")}
                 </p>
               </div>
 

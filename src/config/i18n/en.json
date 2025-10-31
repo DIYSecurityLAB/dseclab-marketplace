@@ -150,5 +150,54 @@
     "legal": "Legal",
     "newsletter": "Subscribe to our newsletter",
     "copyright": "All rights reserved"
+  },
+  "testimonials": {
+    "title": {
+      "highlight": "testimonials.title.highlight",
+      "text": "testimonials.title.text"
+    },
+    "subtitle1": "testimonials.subtitle1",
+    "subtitle2": "testimonials.subtitle2"
+  },
+  "alfredP2P": {
+    "hero": {
+      "title": {
+        "part1": "alfredP2P.hero.title.part1",
+        "highlight1": "alfredP2P.hero.title.highlight1",
+        "highlight2": "alfredP2P.hero.title.highlight2",
+        "part2": "alfredP2P.hero.title.part2",
+        "highlight3": "alfredP2P.hero.title.highlight3"
+      },
+      "description1": {
+        "part1": "alfredP2P.hero.description1.part1",
+        "highlight": "alfredP2P.hero.description1.highlight",
+        "part2": "alfredP2P.hero.description1.part2"
+      },
+      "description2": {
+        "part1": "alfredP2P.hero.description2.part1",
+        "highlight": "alfredP2P.hero.description2.highlight",
+        "part2": "alfredP2P.hero.description2.part2"
+      }
+    },
+    "yourWay": {
+      "title": {
+        "highlight": "alfredP2P.yourWay.title.highlight",
+        "text": "alfredP2P.yourWay.title.text"
+      },
+      "description1": {
+        "part1": "alfredP2P.yourWay.description1.part1",
+        "highlight": "alfredP2P.yourWay.description1.highlight",
+        "part2": "alfredP2P.yourWay.description1.part2"
+      },
+      "description2": "alfredP2P.yourWay.description2"
+    },
+    "partners": {
+      "count": "alfredP2P.partners.count",
+      "label": "alfredP2P.partners.label"
+    },
+    "button": {
+      "text": "alfredP2P.button.text",
+      "highlight": "alfredP2P.button.highlight"
+    }
   }
 }

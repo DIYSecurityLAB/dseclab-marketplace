@@ -1,15 +1,15 @@
-import ColkitPromovideo from "@/components/landing/coldkit_promovideo";
-import FeatureSlide from "@/components/landing/feature-slide";
-import HeroDesktop from "@/components/landing/hero_desktop";
-import HeroMobile from "@/components/landing/hero_mobile";
-import InfluencerVideos from "@/components/landing/influencer-videos";
-import ProductScroller from "@/components/landing/product-scroller";
-import TransactionShowcase from "@/components/landing/transaction-showcase";
-import Testimonials from "@/components/landing/testimonials";
-import AlfredP2P from "@/components/landing/alfred-p2p";
+import ColkitPromovideo from "@/components/lp_index/coldkit_promovideo";
+import FeatureSlide from "@/components/lp_index/feature-slide";
+import HeroDesktop from "@/components/lp_index/hero_desktop";
+import HeroMobile from "@/components/lp_index/hero_mobile";
+import InfluencerVideos from "@/components/lp_index/influencer-videos";
+import ProductScroller from "@/components/lp_index/product-scroller";
+import TransactionShowcase from "@/components/lp_index/transaction-showcase";
+import Testimonials from "@/components/lp_index/testimonials";
+import AlfredP2P from "@/components/lp_index/alfred-p2p";
 import { getProducts } from "@/actions/products";
 import { partners, featureSlides } from "@/config/landing.config";
-import { CommunitySection } from "@/components/landing/community-section";
+import { CommunitySection } from "@/components/lp_index/community-section";
 
 export default async function Home() {
   const result = await getProducts();

@@ -44,21 +44,32 @@ interface Product {
   };
 }
 
+export interface ProductCardProps {
+  title: string;
+  description?: string;
+  price: number;
+  compareAtPrice?: number;
+  imageUrl: string;
+  imageAlt?: string;
+  handle: string;
+  backgroundImage?: string;
+}
+
 interface ProductScrollerProps {
   products: Product[];
 }
 
-function ProductCard({ product }: { product: Product }) {
+export function ProductCard({
+  title,
+  description,
+  price,
+  compareAtPrice,
+  imageUrl,
+  imageAlt,
+  handle,
+  backgroundImage,
+}: ProductCardProps) {
   const { formatPrice } = usePriceFormatter();
-  const image = product.images.edges[0]?.node;
-  const variant = product.variants.edges[0]?.node;
-
-  if (!variant) return null;
-
-  const price = parseFloat(variant.price.amount);
-  const compareAtPrice = variant.compareAtPrice
-    ? parseFloat(variant.compareAtPrice.amount)
-    : null;
   const hasDiscount = compareAtPrice && compareAtPrice > price;
 
   // Calculate installments - same logic as product page
@@ -73,25 +84,34 @@ function ProductCard({ product }: { product: Product }) {
 
   return (
     <Link
-      href={`/products/${product.handle}`}
-      className="group block bg-white shadow-lg mt-32 p-4 rounded-lg"
+      href={`/products/${handle}`}
+      className="group block bg-white shadow-lg mt-8 p-4 rounded-lg bg-cover bg-center"
+      style={
+        backgroundImage
+          ? { backgroundImage: `url(${backgroundImage})` }
+          : undefined
+      }
     >
       <div className="relative mb-4 rounded-lg w-full max-w-site aspect-square">
-        {image && (
-          <Image
-            src={image.url}
-            alt={image.altText || product.title}
-            fill
-            className="object-contain group-hover:scale-105 transition-transform duration-300"
-            unoptimized
-          />
-        )}
+        <Image
+          src={imageUrl}
+          alt={imageAlt || title}
+          fill
+          className="object-contain group-hover:scale-105 transition-transform duration-300"
+          unoptimized
+        />
       </div>
 
       <div className="space-y-2">
         <h3 className="font-black text-accent text-2xl text-center line-clamp-2">
-          {product.title}
+          {title}
         </h3>
+
+        {description && (
+          <p className="text-gray-600 text-sm text-center line-clamp-2">
+            {description}
+          </p>
+        )}
 
         <div className="flex flex-col">
           <div className="flex flex-row justify-between items-center w-full text-center">
@@ -128,7 +148,7 @@ export default function ProductScroller({ products }: ProductScrollerProps) {
   }
 
   return (
-    <div className="mx-auto px-4 w-full max-w-site">
+    <div className="mx-auto px-4 w-full max-w-site overflow-hidden">
       <div className="relative mx-auto py-8">
         <Swiper
           modules={[Navigation]}
@@ -156,19 +176,39 @@ export default function ProductScroller({ products }: ProductScrollerProps) {
               spaceBetween: 24,
             },
           }}
-          className="product-scroller-swiper !overflow-visible"
+          className="product-scroller-swiper"
         >
-          {products.map((product) => (
-            <SwiperSlide key={product.id}>
-              <ProductCard product={product} />
-            </SwiperSlide>
-          ))}
+          {products.map((product) => {
+            const image = product.images.edges[0]?.node;
+            const variant = product.variants.edges[0]?.node;
+
+            if (!variant || !image) return null;
+
+            const price = parseFloat(variant.price.amount);
+            const compareAtPrice = variant.compareAtPrice
+              ? parseFloat(variant.compareAtPrice.amount)
+              : undefined;
+
+            return (
+              <SwiperSlide key={product.id}>
+                <ProductCard
+                  title={product.title}
+                  description={product.description}
+                  price={price}
+                  compareAtPrice={compareAtPrice}
+                  imageUrl={image.url}
+                  imageAlt={image.altText}
+                  handle={product.handle}
+                />
+              </SwiperSlide>
+            );
+          })}
         </Swiper>
 
         {/* Navigation Arrows */}
         <button
           onClick={() => swiperRef.current?.slidePrev()}
-          className="top-1/2 -left-4 lg:-left-12 z-10 absolute flex justify-center items-center bg-white hover:bg-gray-100 border border-gray-200 rounded-full w-10 h-10 text-gray-800 transition-all -translate-y-1/2 duration-200"
+          className="top-1/2 left-2 lg:-left-12 z-10 absolute flex justify-center items-center bg-white hover:bg-gray-100 border border-gray-200 rounded-full w-10 h-10 text-gray-800 transition-all -translate-y-1/2 duration-200"
           aria-label="Previous products"
         >
           <svg
@@ -189,7 +229,7 @@ export default function ProductScroller({ products }: ProductScrollerProps) {
 
         <button
           onClick={() => swiperRef.current?.slideNext()}
-          className="top-1/2 -right-4 lg:-right-12 z-10 absolute flex justify-center items-center bg-white hover:bg-gray-100 border border-gray-200 rounded-full w-10 h-10 text-gray-800 transition-all -translate-y-1/2 duration-200"
+          className="top-1/2 right-2 lg:-right-12 z-10 absolute flex justify-center items-center bg-white hover:bg-gray-100 border border-gray-200 rounded-full w-10 h-10 text-gray-800 transition-all -translate-y-1/2 duration-200"
           aria-label="Next products"
         >
           <svg

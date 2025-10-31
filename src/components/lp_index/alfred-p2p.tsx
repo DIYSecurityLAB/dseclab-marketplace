@@ -3,6 +3,7 @@
 import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import PartnersMarquee from "./partners-marquee";
 
 interface Partner {
@@ -16,6 +17,8 @@ interface AlfredP2PProps {
 }
 
 export default function AlfredP2P({ partners }: AlfredP2PProps) {
+  const t = useTranslations();
+
   return (
     <section
       className="z-[0] relative pt-[340px] pb-16 md:pb-20 lg:pb-24 overflow-hidden"
@@ -38,28 +41,24 @@ export default function AlfredP2P({ partners }: AlfredP2PProps) {
           transition={{ duration: 0.6 }}
         >
           <h2 className="mb-6 md:mb-8 font-bold text-white text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
-            COMPRE BITCOIN DE FORMA{" "}
+            {t("alfredP2P.hero.title.part1")}{" "}
             <span className="text-accent">
-              RÁPIDA,
+              {t("alfredP2P.hero.title.highlight1")}
               <br />
-              PRIVADA
+              {t("alfredP2P.hero.title.highlight2")}
             </span>{" "}
-            E <span className="text-accent">SEM BUROCRACIA</span>
+            {t("alfredP2P.hero.title.part2")}{" "}
+            <span className="text-accent">{t("alfredP2P.hero.title.highlight3")}</span>
           </h2>
           <p className="mb-4 text-white text-base md:text-lg lg:text-xl">
-            O <span className="text-accent">Alfred P2P</span> é a forma mais
-            simples e segura de
-            <br />
-            comprar Bitcoin no Universo, sem burocracia e<br />
-            sem abrir mão da sua privacidade.
+            {t("alfredP2P.hero.description1.part1")}{" "}
+            <span className="text-accent">{t("alfredP2P.hero.description1.highlight")}</span>{" "}
+            {t("alfredP2P.hero.description1.part2")}
           </p>
           <p className="text-white text-base md:text-lg lg:text-xl">
-            Com uma experiência{" "}
-            <span className="text-accent">100% anônima</span> e rápida,
-            <br />
-            você tem total controle sobre suas transações
-            <br />
-            financeiras.
+            {t("alfredP2P.hero.description2.part1")}{" "}
+            <span className="text-accent">{t("alfredP2P.hero.description2.highlight")}</span>{" "}
+            {t("alfredP2P.hero.description2.part2")}
           </p>
         </motion.div>
 
@@ -76,22 +75,16 @@ export default function AlfredP2P({ partners }: AlfredP2PProps) {
             {/* Text */}
             <div className="flex flex-col gap-4">
               <h1 className="font-black text-4xl lg:text-6xl xl:text-7xl uppercase">
-                <span className="text-accent">BITCOIN</span> DO SEU JEITO
+                <span className="text-accent">{t("alfredP2P.yourWay.title.highlight")}</span>{" "}
+                {t("alfredP2P.yourWay.title.text")}
               </h1>
               <p className="font-semibold text-black md:text-lg text-xl lg:text-xl xl:text-2xl 2xl:text-3xl">
-                Seja iniciante ou avançado, o<br />
-                <span className="font-extrabold">Alfred P2P</span> coloca
-                liberdade e privacidade em primeiro lugar.
+                {t("alfredP2P.yourWay.description1.part1")}{" "}
+                <span className="font-extrabold">{t("alfredP2P.yourWay.description1.highlight")}</span>{" "}
+                {t("alfredP2P.yourWay.description1.part2")}
               </p>
               <p className="font-semibold text-lg">
-                Mais que comprar Bitcoin: é ter controle total sobre seu
-                dinheiro sem abrir mão da segurança e autonomia.
-              </p>
-            </div>
-            {/* Black Video Box */}
-            <div className="flex justify-center items-center bg-black rounded-lg aspect-video">
-              <p className="opacity-50 text-white text-lg md:text-xl">
-                Video Placeholder
+                {t("alfredP2P.yourWay.description2")}
               </p>
             </div>
           </div>
@@ -106,15 +99,15 @@ export default function AlfredP2P({ partners }: AlfredP2PProps) {
           transition={{ duration: 0.6, delay: 0.4 }}
         >
           <h3 className="font-bold text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
-            <span className="text-accent">+187</span>{" "}
-            <span className="text-white">PARCEIROS</span>
+            <span className="text-accent">{t("alfredP2P.partners.count")}</span>{" "}
+            <span className="text-white">{t("alfredP2P.partners.label")}</span>
           </h3>
           <PartnersMarquee partners={partners} />
           {/* Buy Bitcoin Button */}
           <Link href="#">
             <div className="group p-1 border-2 border-accent hover:border-white rounded-full font-semibold text-white hover:scale-105 duration-200">
               <div className="bg-accent group-hover:bg-white px-8 lg:px-12 py-3 lg:py-4 rounded-full text-white group-hover:text-black text-4xl lg:text-5xl xl:text-6xl tracking-widest duration-200">
-                COMPRAR <strong>BITCOIN</strong>
+                {t("alfredP2P.button.text")} <strong>{t("alfredP2P.button.highlight")}</strong>
               </div>
             </div>
           </Link>

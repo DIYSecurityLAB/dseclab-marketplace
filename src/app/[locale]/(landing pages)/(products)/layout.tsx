@@ -6,7 +6,7 @@ import { QueryProvider } from "@/lib/providers/query-provider";
 import { CurrencyProvider } from "@/contexts/currency-context";
 import { routing } from "@/config/i18n/routing";
 import { notFound } from "next/navigation";
-import "../globals.css";
+import "@/app/globals.css";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 
@@ -33,13 +33,10 @@ export default async function RootLayout({
 }>) {
   const { locale } = await params;
 
-  // Ensure that the incoming `locale` is valid
   if (!routing.locales.includes(locale as any)) {
     notFound();
   }
 
-  // Providing all messages to the client
-  // side is the easiest way to get started
   const messages = await getMessages();
 
   return (
@@ -52,7 +49,6 @@ export default async function RootLayout({
             <CurrencyProvider>
               <Navbar />
               {children}
-              <Footer />
             </CurrencyProvider>
           </QueryProvider>
         </NextIntlClientProvider>

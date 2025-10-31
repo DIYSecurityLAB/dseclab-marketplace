@@ -198,7 +198,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 z-50 flex justify-center items-center bg-black w-full text-white transition-all duration-300 ${
+      className={`sticky top-0 z-50 flex justify-center items-center bg-black w-full text-white transition-all duration-300 ${
         isScrolled ? "py-2 md:py-4 lg:py-8" : "py-4 md:py-8 lg:py-16"
       }`}
     >
@@ -209,7 +209,7 @@ export default function Navbar() {
         </NavbarSection>
 
         {/* Center - Hidden on mobile */}
-        <NavbarSection className="hidden md:flex flex-1 justify-between">
+        <NavbarSection className="hidden lg:flex flex-1 justify-between">
           <NavigationMenu.Root className="relative">
             <NavigationMenu.List className="flex justify-between items-center gap-6 w-full">
               {NavbarLinks.map((link, i) => (
@@ -225,7 +225,7 @@ export default function Navbar() {
 
           {/* Mobile Hamburger Menu */}
           <DropdownMenu.Root>
-            <DropdownMenu.Trigger className="group md:hidden flex flex-col justify-center items-center gap-1.5 w-6 h-6">
+            <DropdownMenu.Trigger className="group lg:hidden flex flex-col justify-center items-center gap-1.5 w-6 h-6">
               <span className="block bg-white w-6 h-0.5 group-data-[state=open]:rotate-45 transition-all group-data-[state=open]:translate-y-2 duration-300" />
               <span className="block bg-white group-data-[state=open]:opacity-0 w-6 h-0.5 transition-all duration-300" />
               <span className="block bg-white w-6 h-0.5 group-data-[state=open]:-rotate-45 transition-all group-data-[state=open]:-translate-y-2 duration-300" />
@@ -233,7 +233,7 @@ export default function Navbar() {
 
             <DropdownMenu.Portal>
               <DropdownMenu.Content
-                className="md:hidden z-99 bg-black p-6 border-gray-800 border-t w-screen"
+                className="lg:hidden z-99 bg-black p-6 border-gray-800 border-t w-[100vw]"
                 align="end"
                 sideOffset={8}
               >

@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 
 export default function HeroMobile() {
   return (
-    <div className="lg:hidden block">
+    <div className="lg:hidden block overflow-hidden">
       <div className="relative w-full">
         {/* Hero BG */}
         <motion.div
@@ -27,7 +27,7 @@ export default function HeroMobile() {
           />
         </div>
         {/* Content */}
-        <div className="z-2 flex flex-col gap-6 md:gap-8 bg-white px-10 pt-10 rounded-4xl w-full -translate-y-10">
+        <div className="z-2 flex flex-col gap-6 md:gap-8 bg-white px-10 pt-10 rounded-4xl w-full overflow-hidden -translate-y-10">
           <div className="relative grid grid-cols-12 grid-rows-1">
             <div className="flex flex-col gap-4 md:gap-8 col-span-6 w-full text-2xl sm:text-3xl md:text-5xl">
               <div
@@ -54,7 +54,7 @@ export default function HeroMobile() {
               </p>
             </div>
             <motion.div
-              className="-top-1/4 sm:-top-1/4 -right-[20%] md:-right-[15%] absolute bg-contain bg-no-repeat bg-center w-9/12 sm:w-8/12 md:w-2/3 aspect-288/229"
+              className="-right-[10%] md:-right-[5%] absolute bg-contain bg-no-repeat bg-center w-9/12 sm:w-8/12 md:w-2/3 aspect-288/229"
               style={{
                 backgroundImage: "url('/i/hero_mobile.png')",
               }}

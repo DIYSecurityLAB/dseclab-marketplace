@@ -12,7 +12,8 @@ export default function ColkitPromovideo() {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (videoRef.current) {
-          if (entry.isIntersecting) {
+          // Only autoplay if more than 70% is visible
+          if (entry.isIntersecting && entry.intersectionRatio > 0.7) {
             videoRef.current.play().catch((err) => {
               console.debug("Autoplay blocked or failed", err);
             });
@@ -21,7 +22,7 @@ export default function ColkitPromovideo() {
           }
         }
       },
-      { threshold: 0.5 } // 50% in view for better detection
+      { threshold: [0, 0.7] }
     );
 
     if (videoRef.current) {
@@ -46,7 +47,7 @@ export default function ColkitPromovideo() {
         poster="https://cdn.shopify.com/s/files/1/0677/4751/2516/files/Screenshot_2025-10-26_035045.png?v=1761461471"
         className="rounded-lg w-full max-w-7xl aspect-video overflow-hidden"
         draggable={false}
-        controls={false}
+        controls
         loop
         muted
         playsInline

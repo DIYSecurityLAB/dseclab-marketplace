@@ -150,5 +150,54 @@
     "legal": "Legal",
     "newsletter": "Inscreva-se em nossa newsletter",
     "copyright": "Todos os direitos reservados"
+  },
+  "testimonials": {
+    "title": {
+      "highlight": "+DE 100 FEEDBACK",
+      "text": "DE CLIENTES QUE CONFIAM NO NOSSO TRABALHO!"
+    },
+    "subtitle1": "O Bitcoin abre caminho para o futuro.",
+    "subtitle2": "Venha ser soberano"
+  },
+  "alfredP2P": {
+    "hero": {
+      "title": {
+        "part1": "COMPRE BITCOIN DE FORMA",
+        "highlight1": "RÁPIDA,",
+        "highlight2": "PRIVADA",
+        "part2": "E",
+        "highlight3": "SEM BUROCRACIA"
+      },
+      "description1": {
+        "part1": "O",
+        "highlight": "Alfred P2P",
+        "part2": "é a forma mais simples e segura de comprar Bitcoin no Universo, sem burocracia e sem abrir mão da sua privacidade."
+      },
+      "description2": {
+        "part1": "Com uma experiência",
+        "highlight": "100% anônima",
+        "part2": "e rápida, você tem total controle sobre suas transações financeiras."
+      }
+    },
+    "yourWay": {
+      "title": {
+        "highlight": "BITCOIN",
+        "text": "DO SEU JEITO"
+      },
+      "description1": {
+        "part1": "Seja iniciante ou avançado, o",
+        "highlight": "Alfred P2P",
+        "part2": "coloca liberdade e privacidade em primeiro lugar."
+      },
+      "description2": "Mais que comprar Bitcoin: é ter controle total sobre seu dinheiro sem abrir mão da segurança e autonomia."
+    },
+    "partners": {
+      "count": "+187",
+      "label": "PARCEIROS"
+    },
+    "button": {
+      "text": "COMPRAR",
+      "highlight": "BITCOIN"
+    }
   }
 }

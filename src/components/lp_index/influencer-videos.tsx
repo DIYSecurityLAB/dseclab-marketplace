@@ -5,7 +5,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import type { Swiper as SwiperType } from "swiper";
 import { useUserInteraction } from "@/hooks/use-user-interaction";
-import { influencerVideos, type InfluencerVideo } from "@/config/landing.config";
+import {
+  influencerVideos,
+  type InfluencerVideo,
+} from "@/config/landing.config";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -19,7 +22,13 @@ interface VideoSlideProps {
   onVideoRef: (id: string, element: HTMLVideoElement | null) => void;
 }
 
-function VideoSlide({ video, isActive, isInView, hasUserInteracted, onVideoRef }: VideoSlideProps) {
+function VideoSlide({
+  video,
+  isActive,
+  isInView,
+  hasUserInteracted,
+  onVideoRef,
+}: VideoSlideProps) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
   // Handle play/pause based on active state and viewport
@@ -74,6 +83,7 @@ function VideoSlide({ video, isActive, isInView, hasUserInteracted, onVideoRef }
             loop
             muted
             playsInline
+            controls
           />
         )}
       </div>
@@ -92,9 +102,10 @@ export default function InfluencerVideos() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsInView(entry.isIntersecting);
+        // Only consider it "in view" if more than 70% is visible
+        setIsInView(entry.isIntersecting && entry.intersectionRatio > 0.7);
       },
-      { threshold: 0.5 } // 50% in view for better detection
+      { threshold: [0, 0.7] }
     );
 
     if (containerRef.current) {
@@ -113,7 +124,10 @@ export default function InfluencerVideos() {
   };
 
   return (
-    <div ref={containerRef} className="mx-auto px-4 w-full max-w-site">
+    <div
+      ref={containerRef}
+      className="mx-auto px-4 w-full max-w-site overflow-hidden"
+    >
       <div className="relative mx-auto">
         <Swiper
           modules={[Navigation]}
