@@ -21,7 +21,7 @@ export default async function ProductsPage() {
 
   if (!result.success) {
     return (
-      <div className="mx-auto px-4 pt-36 lg:pt-46 container">
+      <div className="mx-auto px-4 pt-36 lg:pt-46 pb-16 container">
         <h1 className="mb-4 font-bold text-2xl text-white">{t("title")}</h1>
         <p className="text-red-500">{t("errorLoading")}</p>
       </div>
@@ -31,7 +31,7 @@ export default async function ProductsPage() {
   const products = (result.data as any).products.edges;
 
   return (
-    <div className="mx-auto px-4 pt-36 lg:pt-46 container">
+    <div className="mx-auto px-4 pt-36 lg:pt-46 pb-16 container">
       <h1 className="mb-8 font-bold text-3xl text-white">{t("title")}</h1>
 
       {products.length === 0 ? (

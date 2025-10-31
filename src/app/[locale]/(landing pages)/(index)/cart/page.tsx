@@ -55,7 +55,7 @@ export default function CartPage() {
 
   if (!cartId) {
     return (
-      <div className="container mx-auto px-4 pt-36 lg:pt-46">
+      <div className="container mx-auto px-4 pt-36 lg:pt-46 pb-16">
         <h1 className="text-3xl font-bold mb-8 text-white">{t('title')}</h1>
         <p className="text-gray-400">{t('empty')}</p>
         <Link
@@ -70,7 +70,7 @@ export default function CartPage() {
 
   if (isLoading) {
     return (
-      <div className="container mx-auto px-4 pt-36 lg:pt-46">
+      <div className="container mx-auto px-4 pt-36 lg:pt-46 pb-16">
         <h1 className="text-3xl font-bold mb-8 text-white">{t('title')}</h1>
         <p className="text-gray-400">{t('loading')}</p>
       </div>
@@ -79,7 +79,7 @@ export default function CartPage() {
 
   if (error || !data?.success || !(data.data as any)?.cart) {
     return (
-      <div className="container mx-auto px-4 pt-36 lg:pt-46">
+      <div className="container mx-auto px-4 pt-36 lg:pt-46 pb-16">
         <h1 className="text-3xl font-bold mb-8 text-white">{t('title')}</h1>
         <p className="text-red-500">{t('errorLoading')}</p>
       </div>
@@ -91,7 +91,7 @@ export default function CartPage() {
 
   if (lines.length === 0) {
     return (
-      <div className="container mx-auto px-4 pt-36 lg:pt-46">
+      <div className="container mx-auto px-4 pt-36 lg:pt-46 pb-16">
         <h1 className="text-3xl font-bold mb-8 text-white">{t('title')}</h1>
         <p className="text-gray-400">{t('empty')}</p>
         <Link
@@ -107,7 +107,7 @@ export default function CartPage() {
   const total = cart.cost.totalAmount;
 
   return (
-    <div className="container mx-auto px-4 pt-36 lg:pt-46">
+    <div className="container mx-auto px-4 pt-36 lg:pt-46 pb-16">
       <h1 className="text-3xl font-bold mb-8 text-white">{t('title')}</h1>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">

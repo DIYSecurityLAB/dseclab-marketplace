@@ -27,7 +27,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
   const t = await getTranslations("product");
 
   return (
-    <div className="mx-auto px-4 pt-36 lg:pt-46 lg: container">
+    <div className="mx-auto px-4 pt-36 lg:pt-46 pb-16 container">
       <Link
         href="/products"
         className="inline-block mb-4 text-accent hover:underline"
