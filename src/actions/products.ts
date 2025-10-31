@@ -66,6 +66,26 @@ export async function getProducts() {
 }
 
 /**
+ * Server Action: Get multiple products by handles
+ */
+export async function getProductsByHandles(handles: string[]) {
+  try {
+    const results = await Promise.all(
+      handles.map(handle => getProductByHandle(handle))
+    );
+
+    const products = results
+      .filter(result => result.success && (result.data as any)?.productByHandle)
+      .map(result => (result.data as any).productByHandle);
+
+    return { success: true, data: { products } };
+  } catch (error) {
+    console.error('Error fetching products:', error);
+    return { success: false, error: 'Failed to fetch products' };
+  }
+}
+
+/**
  * Server Action: Get product by handle
  */
 export async function getProductByHandle(handle: string) {
