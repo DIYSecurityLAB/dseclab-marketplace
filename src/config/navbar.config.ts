@@ -23,34 +23,34 @@ export type INavbarLinks = INavbarLink[];
 export const NavbarLinks: INavbarLinks = [
   {
     translationKey: 'navbar.links.shop',
-    href: '#',
+    href: 'https://dseclab.io/collections/todos-os-produtos',
   },
   {
     translationKey: 'navbar.links.buildKit',
-    href: '#',
+    href: 'https://dseclab.io/pages/monte-seu-kit',
   },
   {
     translationKey: 'navbar.links.academy',
-    href: '#',
+    href: 'https://dseclab.io/pages/d-academy',
   },
   {
     translationKey: 'navbar.links.support.label',
     sublinks: [
       {
         translationKey: 'navbar.links.support.tutorials',
-        href: '/support/tutorials',
+        href: 'https://dseclab.io/pages/tutoriais',
       },
       {
         translationKey: 'navbar.links.support.contact',
-        href: '/support/contact',
+        href: 'https://dseclab.io/pages/contato',
       },
       {
         translationKey: 'navbar.links.support.about',
-        href: '/support/about',
+        href: 'https://dseclab.io/pages/quem-somos',
       },
       {
         translationKey: 'navbar.links.support.sovereignty',
-        href: '/support/sovereignty',
+        href: 'https://dseclab.io/pages/monte-sua-soberania',
       },
     ],
   },
