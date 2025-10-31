@@ -8,6 +8,8 @@ import { Link } from "@/config/i18n/routing";
 import { LanguageSelector } from "./language-selector";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
+import { useQuery } from "@tanstack/react-query";
+import { getCart } from "@/actions/cart";
 
 export interface INavbarSectionProps {
   children?: ReactNode;
@@ -41,7 +43,7 @@ function DesktopNavLink({ link }: { link: INavbarLink }) {
             />
           </svg>
         </NavigationMenu.Trigger>
-        <NavigationMenu.Content className="absolute left-1/2 -translate-x-1/2 bg-black shadow-lg mt-2 border border-white/20 rounded-md w-56 overflow-hidden data-[motion=from-end]:animate-in data-[motion=from-start]:animate-in data-[motion=to-end]:animate-out data-[motion=to-start]:animate-out">
+        <NavigationMenu.Content className="left-1/2 absolute bg-black shadow-lg mt-2 border border-white/20 rounded-md w-56 overflow-hidden -translate-x-1/2 data-[motion=from-end]:animate-in data-[motion=from-start]:animate-in data-[motion=to-end]:animate-out data-[motion=to-start]:animate-out">
           <ul className="p-2">
             {link.sublinks.map((sublink, idx) => {
               const isAnchor = sublink.href.startsWith("#");
@@ -184,6 +186,56 @@ function MobileNavLink({ link }: { link: INavbarLink }) {
   );
 }
 
+function CartIcon() {
+  const [cartId, setCartId] = useState<string | null>(null);
+
+  // Load cart ID from localStorage
+  useEffect(() => {
+    const storedCartId = localStorage.getItem("shopify_cart_id");
+    setCartId(storedCartId);
+  }, []);
+
+  // Fetch cart data to get item count
+  const { data } = useQuery({
+    queryKey: ["cart", cartId],
+    queryFn: () => getCart(cartId!),
+    enabled: !!cartId,
+    refetchInterval: 5000, // Refetch every 5 seconds to keep count updated
+  });
+
+  // Calculate total items in cart
+  const itemCount =
+    data?.success && (data.data as any)?.cart
+      ? (data.data as any).cart.lines.edges.reduce(
+          (total: number, { node }: any) => total + node.quantity,
+          0
+        )
+      : 0;
+
+  return (
+    <Link href="/cart" className="group relative">
+      <svg
+        className="w-6 h-6 text-white group-hover:text-accent transition-colors duration-200"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+        />
+      </svg>
+      {itemCount > 0 && (
+        <span className="-top-2 -right-2 absolute flex justify-center items-center bg-accent rounded-full w-5 h-5 font-bold text-white text-xs">
+          {itemCount > 9 ? "9+" : itemCount}
+        </span>
+      )}
+    </Link>
+  );
+}
+
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -205,7 +257,9 @@ export default function Navbar() {
       <div className="flex justify-between px-8 md:px-12 lg:px-20 w-full max-w-site h-full">
         {/* Left Side */}
         <NavbarSection className="flex-1">
-          <DSecLogo className="h-6 sm:h-7 md:h-8 xl:h-9" />
+          <Link href="/">
+            <DSecLogo className="h-6 sm:h-7 md:h-8 xl:h-9" />
+          </Link>
         </NavbarSection>
 
         {/* Center - Hidden on mobile */}
@@ -222,6 +276,7 @@ export default function Navbar() {
         {/* Right */}
         <NavbarSection className="justify-end gap-4">
           <LanguageSelector />
+          <CartIcon />
 
           {/* Mobile Hamburger Menu */}
           <DropdownMenu.Root>
