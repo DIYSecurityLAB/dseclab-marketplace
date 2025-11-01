@@ -4,6 +4,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { QueryProvider } from "@/lib/providers/query-provider";
 import { CurrencyProvider } from "@/contexts/currency-context";
+import { CartSheetProvider } from "@/contexts/cart-sheet-context";
 import { routing } from "@/config/i18n/routing";
 import { notFound } from "next/navigation";
 import "@/app/globals.css";
@@ -16,8 +17,16 @@ const lexendedDeca = Lexend_Deca({
 });
 
 export const metadata: Metadata = {
-  title: "DIY SecLab",
-  description: "--",
+  title: "Diy Security Lab",
+  description: "Diy Security Lab",
+  icons: {
+    icon: "https://dseclab.io/cdn/shop/files/1_-_TRANSPARENTE_LARANJA_E_PRETO_e279e40a-21b8-4f9c-85f6-711c4a086a84_96x96.png?v=1742392708",
+  },
+  openGraph: {
+    images: [
+      "https://cdn.shopify.com/s/files/1/0677/4751/2516/files/imagem_diyseclab.png?v=1743694118",
+    ],
+  },
 };
 
 export function generateStaticParams() {
@@ -50,9 +59,11 @@ export default async function RootLayout({
         <NextIntlClientProvider messages={messages}>
           <QueryProvider>
             <CurrencyProvider>
-              <Navbar />
-              {children}
-              <Footer />
+              <CartSheetProvider>
+                <Navbar />
+                {children}
+                <Footer />
+              </CartSheetProvider>
             </CurrencyProvider>
           </QueryProvider>
         </NextIntlClientProvider>

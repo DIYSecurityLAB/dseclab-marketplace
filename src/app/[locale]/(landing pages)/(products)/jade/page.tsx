@@ -17,7 +17,6 @@ export default function JadePage() {
       <TestimonialsSection />
       <CtaBanner />
       <FaqSection />
-      <Footer />
     </div>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { addToCart, createCart } from "@/actions/cart";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Thumbs, FreeMode } from "swiper/modules";
@@ -9,6 +9,7 @@ import type { Swiper as SwiperType } from "swiper";
 import Image from "next/image";
 import { paymentOperators, installmentConfig } from "@/config/payment.config";
 import { useTranslations } from "next-intl";
+import { useCartSheet } from "@/contexts/cart-sheet-context";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -22,6 +23,8 @@ interface ProductClientProps {
 
 export function ProductClient({ product }: ProductClientProps) {
   const t = useTranslations("product");
+  const { openCart } = useCartSheet();
+  const queryClient = useQueryClient();
   const [selectedOptions, setSelectedOptions] = useState<
     Record<string, string>
   >({});
@@ -101,11 +104,14 @@ export function ProductClient({ product }: ProductClientProps) {
     },
     onSuccess: (data) => {
       if ((data.data as any)?.cartLinesAdd?.cart?.id) {
-        localStorage.setItem(
-          "shopify_cart_id",
-          (data.data as any).cartLinesAdd.cart.id
-        );
-        alert(t("addedToCart"));
+        const cartId = (data.data as any).cartLinesAdd.cart.id;
+        localStorage.setItem("shopify_cart_id", cartId);
+
+        // Invalidate cart query to refresh the cart data
+        queryClient.invalidateQueries({ queryKey: ["cart", cartId] });
+
+        // Open cart sheet instead of showing alert
+        openCart();
       }
     },
     onError: () => {

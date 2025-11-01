@@ -367,7 +367,7 @@ export default function HeroDesktop() {
               />
             </svg>
             <div className="z-10 relative flex flex-col justify-start items-center gap-4 lg:gap-6 px-2 lg:px-4 h-full">
-              <a href="/products">
+              <a href="/products/coldkit">
                 <div className="group p-0.5 lg:p-1 border-2 border-white hover:border-accent rounded-full font-semibold hover:text-white text-xs lg:text-sm xl:text-base hover:scale-105 duration-200">
                   <div className="bg-white group-hover:bg-accent px-6 lg:px-8 py-2 lg:py-3 rounded-full text-xl xl:text-2xl 2xl:text-3xl tracking-widest duration-200">
                     COMPRE <strong>AGORA!</strong>

@@ -10,6 +10,8 @@ import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import { useQuery } from "@tanstack/react-query";
 import { getCart } from "@/actions/cart";
+import { CartSheet } from "./cart-sheet";
+import { useCartSheet } from "@/contexts/cart-sheet-context";
 
 export interface INavbarSectionProps {
   children?: ReactNode;
@@ -186,7 +188,7 @@ function MobileNavLink({ link }: { link: INavbarLink }) {
   );
 }
 
-function CartIcon() {
+function CartIcon({ onClick }: { onClick: () => void }) {
   const [cartId, setCartId] = useState<string | null>(null);
 
   // Load cart ID from localStorage
@@ -213,7 +215,7 @@ function CartIcon() {
       : 0;
 
   return (
-    <Link href="/cart" className="group relative">
+    <button onClick={onClick} className="group relative">
       <svg
         className="w-6 h-6 text-white group-hover:text-accent transition-colors duration-200"
         fill="none"
@@ -232,12 +234,13 @@ function CartIcon() {
           {itemCount > 9 ? "9+" : itemCount}
         </span>
       )}
-    </Link>
+    </button>
   );
 }
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const { isOpen, openCart, closeCart } = useCartSheet();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -276,7 +279,7 @@ export default function Navbar() {
         {/* Right */}
         <NavbarSection className="justify-end gap-4">
           <LanguageSelector />
-          <CartIcon />
+          <CartIcon onClick={openCart} />
 
           {/* Mobile Hamburger Menu */}
           <DropdownMenu.Root>
@@ -308,6 +311,9 @@ export default function Navbar() {
           </DropdownMenu.Root>
         </NavbarSection>
       </div>
+
+      {/* Cart Sheet */}
+      <CartSheet open={isOpen} onOpenChange={(open) => open ? openCart() : closeCart()} />
     </nav>
   );
 }

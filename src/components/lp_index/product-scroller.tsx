@@ -148,9 +148,10 @@ export default function ProductScroller({ products }: ProductScrollerProps) {
   }
 
   return (
-    <div className="mx-auto px-4 w-full max-w-site overflow-hidden">
+    <div className="mx-auto px-4 w-full max-w-site">
       <div className="relative mx-auto py-8">
-        <Swiper
+        <div className="overflow-hidden">
+          <Swiper
           modules={[Navigation]}
           slidesPerView={2}
           spaceBetween={16}
@@ -204,6 +205,7 @@ export default function ProductScroller({ products }: ProductScrollerProps) {
             );
           })}
         </Swiper>
+        </div>
 
         {/* Navigation Arrows */}
         <button

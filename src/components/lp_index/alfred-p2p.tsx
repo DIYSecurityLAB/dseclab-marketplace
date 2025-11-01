@@ -48,16 +48,22 @@ export default function AlfredP2P({ partners }: AlfredP2PProps) {
               {t("alfredP2P.hero.title.highlight2")}
             </span>{" "}
             {t("alfredP2P.hero.title.part2")}{" "}
-            <span className="text-accent">{t("alfredP2P.hero.title.highlight3")}</span>
+            <span className="text-accent">
+              {t("alfredP2P.hero.title.highlight3")}
+            </span>
           </h2>
           <p className="mb-4 text-white text-base md:text-lg lg:text-xl">
             {t("alfredP2P.hero.description1.part1")}{" "}
-            <span className="text-accent">{t("alfredP2P.hero.description1.highlight")}</span>{" "}
+            <span className="text-accent">
+              {t("alfredP2P.hero.description1.highlight")}
+            </span>{" "}
             {t("alfredP2P.hero.description1.part2")}
           </p>
           <p className="text-white text-base md:text-lg lg:text-xl">
             {t("alfredP2P.hero.description2.part1")}{" "}
-            <span className="text-accent">{t("alfredP2P.hero.description2.highlight")}</span>{" "}
+            <span className="text-accent">
+              {t("alfredP2P.hero.description2.highlight")}
+            </span>{" "}
             {t("alfredP2P.hero.description2.part2")}
           </p>
         </motion.div>
@@ -71,16 +77,20 @@ export default function AlfredP2P({ partners }: AlfredP2PProps) {
           transition={{ duration: 0.6, delay: 0.2 }}
         >
           {/* Grid: Text + Video Box */}
-          <div className="items-start gap-4 md:gap-8 grid grid-cols-1 lg:grid-cols-2 lg:text-left text-center">
+          <div className="items-start gap-4 md:gap-8 lg:text-left text-center">
             {/* Text */}
             <div className="flex flex-col gap-4">
               <h1 className="font-black text-4xl lg:text-6xl xl:text-7xl uppercase">
-                <span className="text-accent">{t("alfredP2P.yourWay.title.highlight")}</span>{" "}
+                <span className="text-accent">
+                  {t("alfredP2P.yourWay.title.highlight")}
+                </span>{" "}
                 {t("alfredP2P.yourWay.title.text")}
               </h1>
               <p className="font-semibold text-black md:text-lg text-xl lg:text-xl xl:text-2xl 2xl:text-3xl">
                 {t("alfredP2P.yourWay.description1.part1")}{" "}
-                <span className="font-extrabold">{t("alfredP2P.yourWay.description1.highlight")}</span>{" "}
+                <span className="font-extrabold">
+                  {t("alfredP2P.yourWay.description1.highlight")}
+                </span>{" "}
                 {t("alfredP2P.yourWay.description1.part2")}
               </p>
               <p className="font-semibold text-lg">
@@ -104,10 +114,11 @@ export default function AlfredP2P({ partners }: AlfredP2PProps) {
           </h3>
           <PartnersMarquee partners={partners} />
           {/* Buy Bitcoin Button */}
-          <Link href="#">
+          <Link href="https://alfredp2p.io/">
             <div className="group p-1 border-2 border-accent hover:border-white rounded-full font-semibold text-white hover:scale-105 duration-200">
               <div className="bg-accent group-hover:bg-white px-8 lg:px-12 py-3 lg:py-4 rounded-full text-white group-hover:text-black text-4xl lg:text-5xl xl:text-6xl tracking-widest duration-200">
-                {t("alfredP2P.button.text")} <strong>{t("alfredP2P.button.highlight")}</strong>
+                {t("alfredP2P.button.text")}{" "}
+                <strong>{t("alfredP2P.button.highlight")}</strong>
               </div>
             </div>
           </Link>

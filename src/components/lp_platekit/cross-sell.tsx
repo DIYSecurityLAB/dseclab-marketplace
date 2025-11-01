@@ -1,14 +1,31 @@
-function Product() {
+function Product({
+  name,
+  description,
+  originalPrice,
+  newPrice,
+  picture,
+}: {
+  name: string;
+  description: string;
+  originalPrice: string;
+  newPrice: string;
+  picture: string;
+}) {
   return (
     <div className="flex flex-col gap-8">
       <div className="flex flex-col gap-4 w-full">
-        <div className="bg-[url(/products_lp/crosssell_bg_coldkit.png)] bg-cover bg-no-repeat bg-center aspect-361/222" />
-        <span className="text-accent uppercase">cold kit</span>
-        <h6 className="font-bold text-2xl">
-          O Kit para guardar Bitcoin mais seguro do mundo
-        </h6>
-        <span className="font-semibold text-accent line-through">R$915,00</span>
-        <span className="font-bold text-accent text-5xl">R$640,00</span>
+        <div
+          className={`bg-cover bg-no-repeat bg-center aspect-361/222`}
+          style={{
+            backgroundImage: `url(${picture})`,
+          }}
+        />
+        <span className="text-accent uppercase">{name}</span>
+        <h6 className="font-bold text-2xl">{description}</h6>
+        <span className="font-semibold text-accent line-through">
+          {originalPrice}
+        </span>
+        <span className="font-bold text-accent text-5xl">{newPrice}</span>
       </div>
       <button className="flex items-center gap-2 text-white cursor-pointer">
         Conheça Agora
@@ -34,8 +51,20 @@ export function CrossSell() {
     <div className="flex flex-col justify-center items-center gap-16 bg-[url(/products_lp/crossell_bg.png)] bg-cover bg-center mx-auto p-16 w-full max-w-7xl text-white">
       <h1 className="font-bold text-3xl">Conheça outras soluções</h1>
       <div className="flex gap-8 w-full">
-        <Product />
-        <Product />
+        <Product
+          name="cold kit"
+          description="O Kit para guardar Bitcoin mais seguro do mundo"
+          originalPrice="R$915,00"
+          newPrice="R$640,00"
+          picture="/products_lp/crosssell_bg_coldkit.png"
+        />
+        <Product
+          name="jade kit"
+          description="O Kit para guardar Bitcoin mais seguro do mundo"
+          originalPrice="R$915,00"
+          newPrice="R$640,00"
+          picture="/products_lp/crosssell_bg_jade.png"
+        />
       </div>
     </div>
   );

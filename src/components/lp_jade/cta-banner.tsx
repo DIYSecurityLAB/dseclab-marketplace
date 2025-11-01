@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 export function CtaBanner() {
   return (
     <div className="relative flex flex-col justify-center items-center gap-4 bg-[url(/products_lp/cta_banner.png)] bg-cover bg-no-repeat bg-center mx-auto px-16 py-12 w-full max-w-7xl text-center">
@@ -11,6 +13,7 @@ export function CtaBanner() {
           ou até acabarem os estoques
         </p>
       </div>
+      <Link href="/products/jage"></Link>
       <button className="bg-white px-4 py-2 w-fit cursor-pointer">
         Comprar Agora
       </button>

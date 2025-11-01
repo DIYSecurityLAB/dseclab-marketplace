@@ -106,6 +106,76 @@ export async function addToCart(cartId: string, merchandiseId: string, quantity:
 }
 
 /**
+ * Server Action: Add multiple items to cart in a single request
+ * More efficient than calling addToCart multiple times
+ */
+export async function addMultipleToCart(
+  cartId: string,
+  items: { merchandiseId: string; quantity: number }[]
+) {
+  try {
+    const query = `
+      mutation AddToCart($cartId: ID!, $lines: [CartLineInput!]!) {
+        cartLinesAdd(cartId: $cartId, lines: $lines) {
+          cart {
+            id
+            lines(first: 10) {
+              edges {
+                node {
+                  id
+                  quantity
+                  merchandise {
+                    ... on ProductVariant {
+                      id
+                      title
+                      priceV2 {
+                        amount
+                        currencyCode
+                      }
+                      product {
+                        title
+                      }
+                    }
+                  }
+                }
+              }
+            }
+            cost {
+              totalAmount {
+                amount
+                currencyCode
+              }
+              subtotalAmount {
+                amount
+                currencyCode
+              }
+            }
+          }
+          userErrors {
+            field
+            message
+          }
+        }
+      }
+    `;
+
+    const variables = {
+      cartId,
+      lines: items.map(item => ({
+        merchandiseId: item.merchandiseId,
+        quantity: item.quantity,
+      })),
+    };
+
+    const data = await storefrontQuery(query, variables);
+    return { success: true, data };
+  } catch (error) {
+    console.error('Error adding multiple items to cart:', error);
+    return { success: false, error: 'Failed to add items to cart' };
+  }
+}
+
+/**
  * Server Action: Update cart line quantity
  */
 export async function updateCartLine(cartId: string, lineId: string, quantity: number) {

@@ -17,7 +17,6 @@ export default function ColdkitPage() {
       <TestimonialsSection />
       <CtaBanner />
       <FaqSection />
-      <Footer />
     </div>
   );
 }

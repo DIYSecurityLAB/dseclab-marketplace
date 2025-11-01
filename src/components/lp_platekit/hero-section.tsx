@@ -1,10 +1,116 @@
 "use client";
 
-import Link from "next/link";
-import { useRef } from "react";
+import { useState, useEffect } from "react";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { addMultipleToCart, createCart } from "@/actions/cart";
+import { getProductByHandle } from "@/actions/products";
+import { useCartSheet } from "@/contexts/cart-sheet-context";
 
 export function HeroSection() {
-  const batteryCheckboxRef = useRef<HTMLInputElement>(null);
+  const [isAddOnsSelected, setIsAddOnsSelected] = useState(false);
+  const { openCart } = useCartSheet();
+  const queryClient = useQueryClient();
+
+  const { data: platekitProduct } = useQuery({
+    queryKey: ["product", "platekit"],
+    queryFn: async () => {
+      const result = await getProductByHandle("platekit");
+      return result.success ? (result.data as any).productByHandle : null;
+    },
+  });
+
+  // Fetch add-on products
+  const { data: placa1248 } = useQuery({
+    queryKey: ["product", "placa-1248-laser"],
+    queryFn: async () => {
+      const result = await getProductByHandle("placa-1248-laser");
+      return result.success ? (result.data as any).productByHandle : null;
+    },
+  });
+
+  const { data: puncaoProduct } = useQuery({
+    queryKey: ["product", "ferramenta-de-puncao"],
+    queryFn: async () => {
+      const result = await getProductByHandle("ferramenta-de-puncao");
+      return result.success ? (result.data as any).productByHandle : null;
+    },
+  });
+
+  const platekitVariantId = platekitProduct?.variants?.edges?.[0]?.node?.id;
+  const placa1248VariantId = placa1248?.variants?.edges?.[0]?.node?.id;
+  const puncaoVariantId = puncaoProduct?.variants?.edges?.[0]?.node?.id;
+
+  // Prefetch/create cart on page load for faster checkout
+  useEffect(() => {
+    const ensureCart = async () => {
+      const existingCartId = localStorage.getItem("shopify_cart_id");
+      if (!existingCartId) {
+        const cartResult = await createCart();
+        if (cartResult.success) {
+          const newCartId = (cartResult.data as any).cartCreate.cart.id;
+          localStorage.setItem("shopify_cart_id", newCartId);
+        }
+      }
+    };
+    ensureCart();
+  }, []);
+
+  // Add to cart mutation - optimized for batch operations
+  const addToCartMutation = useMutation({
+    mutationFn: async (items: { variantId: string; quantity: number }[]) => {
+      let currentCartId = localStorage.getItem("shopify_cart_id");
+
+      if (!currentCartId) {
+        const cartResult = await createCart();
+        if (cartResult.success) {
+          currentCartId = (cartResult.data as any).cartCreate.cart.id;
+          localStorage.setItem("shopify_cart_id", currentCartId as string);
+        } else {
+          throw new Error("Failed to create cart");
+        }
+      }
+
+      // Add all items in a single API call
+      const result = await addMultipleToCart(
+        currentCartId as string,
+        items.map((item) => ({
+          merchandiseId: item.variantId,
+          quantity: item.quantity,
+        }))
+      );
+
+      return { cartId: currentCartId, result };
+    },
+    onSuccess: async ({ cartId }) => {
+      await queryClient.invalidateQueries({ queryKey: ["cart", cartId] });
+      openCart();
+    },
+  });
+
+  const handleToggleAddOns = () => {
+    setIsAddOnsSelected(!isAddOnsSelected);
+  };
+
+  const handleComprar = () => {
+    if (!platekitVariantId) return;
+
+    const itemsToAdd = [{ variantId: platekitVariantId, quantity: 1 }];
+
+    // Add add-ons if checkbox is selected
+    if (isAddOnsSelected && placa1248VariantId && puncaoVariantId) {
+      itemsToAdd.push({ variantId: placa1248VariantId, quantity: 1 });
+      itemsToAdd.push({ variantId: puncaoVariantId, quantity: 1 });
+    }
+
+    addToCartMutation.mutate(itemsToAdd);
+  };
+
+  const handleSaibaMais = () => {
+    const featuresSection = document.querySelector('[data-section="features"]');
+    if (featuresSection) {
+      featuresSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
 
   return (
     <div className="flex xl:flex-row flex-col bg-[url('/products_lp/platekit_hero_bg.png')] bg-black bg-cover bg-no-repeat xl:bg-center bg-right mx-auto p-6 sm:p-8 md:p-12 xl:p-20 w-full max-w-352 text-white">
@@ -32,18 +138,58 @@ export function HeroSection() {
         <div className="xl:hidden block self-end by-16">
           <div className="bg-[url(/i/noconnicons.png)] bg-contain bg-center w-[127px] aspect-127/32" />
         </div>
-        {/* <div className="flex flex-col">
-          <span className="text-accent text-lg sm:text-xl">R$915,00</span>
+
+        <div className="flex flex-col">
+          <span className="text-accent text-lg sm:text-xl line-through">
+            R$915,00
+          </span>
           <span className="text-accent text-3xl sm:text-4xl xl:text-5xl">
             R$658,00
           </span>
         </div>
 
+        {/* <button
+          onClick={handleToggleAddOns}
+          className="flex items-center gap-4 hover:opacity-80 text-left transition-opacity cursor-pointer"
+        >
+          <div
+            className={`border border-accent rounded-xs w-6 h-6 flex items-center justify-center transition-colors flex-shrink-0 ${
+              isAddOnsSelected ? "bg-accent" : ""
+            }`}
+          >
+            {isAddOnsSelected && (
+              <svg
+                className="w-4 h-4 text-black"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={3}
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
+            )}
+          </div>
+          <span className="font-semibold">
+            Adicionar Placa 1248 + Punção Automático
+          </span>
+        </button>
+
         <div className="flex sm:flex-row flex-col gap-3 sm:gap-4">
-          <button className="bg-accent px-4 py-2 font-medium text-black text-sm sm:text-base">
-            Comprar
+          <button
+            onClick={handleComprar}
+            disabled={!platekitVariantId || addToCartMutation.isPending}
+            className="bg-accent disabled:opacity-50 px-4 py-2 font-medium text-black text-sm sm:text-base cursor-pointer"
+          >
+            {addToCartMutation.isPending ? "Adicionando..." : "Comprar"}
           </button>
-          <button className="flex justify-center sm:justify-start items-center gap-2 px-4 py-2 font-medium text-accent text-sm sm:text-base">
+          <button
+            onClick={handleSaibaMais}
+            className="flex justify-center sm:justify-start items-center gap-2 px-4 py-2 font-medium text-accent text-sm sm:text-base"
+          >
             Saiba mais
             <svg
               width="11"
@@ -61,7 +207,7 @@ export function HeroSection() {
         </div> */}
       </div>
       <div className="hidden xl:block relative mt-8 xl:mt-0 w-full xl:w-1/2 min-h-48 sm:min-h-64 xl:min-h-0">
-        <div className="top-1/2 right-4 sm:right-8 xl:right-0 absolute bg-[url(/products_lp/blackfriday_promo_badge.png)] bg-contain bg-center backdrop-blur-md rounded-full w-24 sm:w-32 xl:w-1/4 aspect-square overflow-hidden -translate-y-1/2"></div>
+        <div className="top-1/2 right-4 sm:right-8 xl:right-0 absolute bg-[url(/products_lp/blackfriday_promo_badge.png)] bg-contain bg-center backdrop-blur-md rounded-full w-24 sm:w-32 xl:w-52 aspect-square overflow-hidden -translate-y-1/2"></div>
         <div className="hidden xl:block right-0 bottom-0 absolute">
           <div className="bg-[url(/i/noconnicons.png)] bg-contain bg-center w-[127px] aspect-127/32" />
         </div>

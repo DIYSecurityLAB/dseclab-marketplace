@@ -19,7 +19,6 @@ export default function ColdkitPage() {
       <CtaBanner />
       <CrossSell />
       <FaqSection />
-      <Footer />
     </div>
   );
 }

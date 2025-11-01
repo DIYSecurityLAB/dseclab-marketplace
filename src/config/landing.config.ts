@@ -92,18 +92,18 @@ export const influencerVideos: InfluencerVideo[] = [
     thumbnail: '//dseclab.io/cdn/shop/files/preview_images/b5cb27baa7f644ebb28b79f10ee2aabe.thumbnail.0000000000_small.jpg?v=1757010511',
     type: 'hosted',
   },
-  {
-    id: '7',
-    videoUrl: '//dseclab.io/cdn/shop/videos/c/vp/3cf2e1aeaa904b709ac394fda37b60d5/3cf2e1aeaa904b709ac394fda37b60d5.HD-720p-1.6Mbps-56830459.mp4?v=0',
-    thumbnail: '//dseclab.io/cdn/shop/files/preview_images/3cf2e1aeaa904b709ac394fda37b60d5.thumbnail.0000000000_small.jpg?v=1757022383',
-    type: 'hosted',
-  },
-  {
-    id: '1',
-    videoUrl: '//dseclab.io/cdn/shop/videos/c/vp/45bcc0cea3bb4dd0a7e01b5056a31c56/45bcc0cea3bb4dd0a7e01b5056a31c56.HD-1080p-2.5Mbps-56820724.mp4?v=0',
-    thumbnail: '//dseclab.io/cdn/shop/files/preview_images/45bcc0cea3bb4dd0a7e01b5056a31c56.thumbnail.0000000000_small.jpg?v=1757010129',
-    type: 'hosted',
-  },
+  // {
+  //   id: '7',
+  //   videoUrl: '//dseclab.io/cdn/shop/videos/c/vp/3cf2e1aeaa904b709ac394fda37b60d5/3cf2e1aeaa904b709ac394fda37b60d5.HD-720p-1.6Mbps-56830459.mp4?v=0',
+  //   thumbnail: '//dseclab.io/cdn/shop/files/preview_images/3cf2e1aeaa904b709ac394fda37b60d5.thumbnail.0000000000_small.jpg?v=1757022383',
+  //   type: 'hosted',
+  // },
+  // {
+  //   id: '1',
+  //   videoUrl: '//dseclab.io/cdn/shop/videos/c/vp/45bcc0cea3bb4dd0a7e01b5056a31c56/45bcc0cea3bb4dd0a7e01b5056a31c56.HD-1080p-2.5Mbps-56820724.mp4?v=0',
+  //   thumbnail: '//dseclab.io/cdn/shop/files/preview_images/45bcc0cea3bb4dd0a7e01b5056a31c56.thumbnail.0000000000_small.jpg?v=1757010129',
+  //   type: 'hosted',
+  // },
 ];
 
 /**
